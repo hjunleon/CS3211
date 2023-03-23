@@ -1,0 +1,6 @@
+An order’s EXECUTION ID is a number starting from 1, incrementing serially each time that resting order is matched. 
+ - std::atomic<int> atomic_counter = 0;
+ - fetch_add per match 
+ - execution_id increases per match, resting_id stays the same
+
+resting_order_id and order_id/new_order_id can be global std::atomic<int>

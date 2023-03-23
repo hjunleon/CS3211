@@ -1,0 +1,4 @@
+Since can only use channels as the shared data: 
+- use channels to broadcast the orders/cancels to a instrument-buy and instrument-sell side go routine  
+- There's an overall "daemon" go routine that receives the clients requests, potentially creates new instrument-buy and instrument-sell go routines if dont exist
+- Daemon routine keeps track of the price-time 

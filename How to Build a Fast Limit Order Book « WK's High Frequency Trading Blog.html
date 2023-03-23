@@ -1,0 +1,587 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en"><head profile="http://gmpg.org/xfn/11"><script src="How%20to%20Build%20a%20Fast%20Limit%20Order%20Book%20%C2%AB%20WK's%20High%20Frequency%20Trading%20Blog_files/analytics.js" type="text/javascript"></script>
+<script type="text/javascript">window.addEventListener('DOMContentLoaded',function(){var v=archive_analytics.values;v.service='wb';v.server_name='wwwb-app212.us.archive.org';v.server_ms=214;archive_analytics.send_pageview({});});</script>
+<script type="text/javascript" src="How%20to%20Build%20a%20Fast%20Limit%20Order%20Book%20%C2%AB%20WK's%20High%20Frequency%20Trading%20Blog_files/bundle-playback.js" charset="utf-8"></script>
+<script type="text/javascript" src="How%20to%20Build%20a%20Fast%20Limit%20Order%20Book%20%C2%AB%20WK's%20High%20Frequency%20Trading%20Blog_files/wombat.js" charset="utf-8"></script>
+<script type="text/javascript">
+  __wm.init("https://web.archive.org/web");
+  __wm.wombat("http://howtohft.wordpress.com:80/2011/02/15/how-to-build-a-fast-limit-order-book/","20110219163448","https://web.archive.org/","web","/_static/",
+	      "1298133288");
+</script>
+<link rel="stylesheet" type="text/css" href="How%20to%20Build%20a%20Fast%20Limit%20Order%20Book%20%C2%AB%20WK's%20High%20Frequency%20Trading%20Blog_files/banner-styles.css">
+<link rel="stylesheet" type="text/css" href="How%20to%20Build%20a%20Fast%20Limit%20Order%20Book%20%C2%AB%20WK's%20High%20Frequency%20Trading%20Blog_files/iconochive.css">
+<!-- End Wayback Rewrite JS Include -->
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>How to Build a Fast Limit Order Book « WK's High Frequency Trading Blog</title>
+
+<link rel="stylesheet" href="How%20to%20Build%20a%20Fast%20Limit%20Order%20Book%20%C2%AB%20WK's%20High%20Frequency%20Trading%20Blog_files/style.css" type="text/css" media="screen">
+
+<script type="text/javascript" src="How%20to%20Build%20a%20Fast%20Limit%20Order%20Book%20%C2%AB%20WK's%20High%20Frequency%20Trading%20Blog_files/base.js"></script>
+<script type="text/javascript" src="How%20to%20Build%20a%20Fast%20Limit%20Order%20Book%20%C2%AB%20WK's%20High%20Frequency%20Trading%20Blog_files/menu.js"></script>
+
+<link rel="pingback" href="http://howtohft.wordpress.com/xmlrpc.php">
+<link rel="alternate" type="application/rss+xml" title="WK's High Frequency Trading Blog » Feed" href="https://web.archive.org/web/20110219163448/http://howtohft.wordpress.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="WK's High Frequency Trading Blog » Comments Feed" href="https://web.archive.org/web/20110219163448/http://howtohft.wordpress.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="WK's High Frequency Trading Blog » How to Build a Fast Limit Order&nbsp;Book Comments Feed" href="https://web.archive.org/web/20110219163448/http://howtohft.wordpress.com/2011/02/15/how-to-build-a-fast-limit-order-book/feed/">
+<script type="text/javascript">
+/* <![CDATA[ */
+function addLoadEvent(func){var oldonload=window.onload;if(typeof window.onload!='function'){window.onload=func;}else{window.onload=function(){oldonload();func();}}}
+/* ]]> */
+</script>
+<link rel="stylesheet" href="How%20to%20Build%20a%20Fast%20Limit%20Order%20Book%20%C2%AB%20WK's%20High%20Frequency%20Trading%20Blog_files/global.css" type="text/css">
+<link rel="stylesheet" id="grunion.css-css" href="How%20to%20Build%20a%20Fast%20Limit%20Order%20Book%20%C2%AB%20WK's%20High%20Frequency%20Trading%20Blog_files/grunion.css" type="text/css" media="all">
+<script type="text/javascript" src="How%20to%20Build%20a%20Fast%20Limit%20Order%20Book%20%C2%AB%20WK's%20High%20Frequency%20Trading%20Blog_files/l10n.js"></script>
+<script type="text/javascript" src="How%20to%20Build%20a%20Fast%20Limit%20Order%20Book%20%C2%AB%20WK's%20High%20Frequency%20Trading%20Blog_files/jquery.js"></script>
+<script type="text/javascript" src="How%20to%20Build%20a%20Fast%20Limit%20Order%20Book%20%C2%AB%20WK's%20High%20Frequency%20Trading%20Blog_files/comment-reply.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://howtohft.wordpress.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://howtohft.wordpress.com/wp-includes/wlwmanifest.xml"> 
+<link rel="index" title="WK's High Frequency Trading Blog" href="http://howtohft.wordpress.com/">
+<link rel="prev" title="Building a Trading System – General&nbsp;Considerations" href="https://web.archive.org/web/20110219163448/http://howtohft.wordpress.com/2011/02/15/building-a-trading-system-general-considerations/">
+<link rel="next" title="Clocks and&nbsp;Latency" href="https://web.archive.org/web/20110219163448/http://howtohft.wordpress.com/2011/02/15/clocks-and-latency/">
+<meta name="generator" content="WordPress.com">
+<link rel="canonical" href="https://web.archive.org/web/20110219163448/http://howtohft.wordpress.com/2011/02/15/how-to-build-a-fast-limit-order-book/">
+<link rel="shortlink" href="https://web.archive.org/web/20110219163448/http://wp.me/p1miJP-9">
+<link rel="shortcut icon" type="image/x-icon" href="https://web.archive.org/web/20110219163448im_/http://s1.wp.com/i/favicon-stacked.ico?m=1293710959g" sizes="16x16 24x24 32x32 48x48">
+<link rel="icon" type="image/x-icon" href="https://web.archive.org/web/20110219163448im_/http://s1.wp.com/i/favicon-stacked.ico?m=1293710959g" sizes="16x16 24x24 32x32 48x48">
+<link rel="apple-touch-icon" href="https://web.archive.org/web/20110219163448im_/http://s0.wp.com/wp-content/themes/h4/i/webclip.png?m=1293710969g">
+	<style type="text/css">
+	/* <![CDATA[ */
+				div#likes { margin-top: 15px; }
+		.like-button { border: 1px solid #eee; padding: 2px 6px; font-size: 13px; font-family: arial, tahoma, sans-serif; }
+		#wpl-likebox { clear: left; font-size: 11px; font-family: arial, tahoma, verdana, sans-serif !important; min-height: 30px; margin: 10px 0 !important; padding: 5px 0 10px 0 !important; }
+		#wpl-button { float: left; background: url( /web/20110219163448im_/http://howtohft.wordpress.com/i/buttonbg.png ) top left repeat-x; margin-right: 7px; border: 1px solid #d4d4d4; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; }
+		#wpl-button a { color: #666 !important; line-height: 130% !important; text-decoration: none !important; outline: none; float: left; padding: 3px 6px 2px 24px !important; font-size: 11px !important; background: url( /web/20110219163448im_/http://howtohft.wordpress.com/i/likestar.png ) 6px 49.8% no-repeat; }
+		#wpl-button.liked { background: #feffce; border: 1px solid #f3e389; }
+		#wpl-button.liked a { color: #ba871b !important; }
+		#wpl-likebox #wpl-count { min-height: 25px; line-height: 130% !important; float: left; padding-top: 4px; }
+		#wpl-likebox #wpl-avatars { clear: left; max-height: 98px; overflow: hidden; margin-top: 15px; line-height: 130% !important; }
+		#wpl-likebox #wpl-avatars img { border: none !important; }
+		#wpl-likebox #wpl-mustlogin { line-height: 14px !important; font-size: 11px; clear: left; margin-top: 5px; background: #f0f0f0; padding: 10px; width: 65%; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; }
+		#wpl-likebox #wpl-mustlogin a { color: #888; text-decoration: underline; }
+		#wpl-likebox #wpl-mustlogin p { margin: 5px 0; padding: 0 }
+		#wpl-likebox #wpl-mustlogin input.input { padding: 2px; background: #fff; font-size: 11px; font-family: inherit; border: 1px solid #ccc; -moz-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1) inset; -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1) inset; line-height: 12px; }
+		#wpl-likebox #wpl-mustlogin input#wp-submit { border: 1px solid #ccc; font-size: 11px; background: #fafafa; repeat-x; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; padding: 2px 4px !important; line-height: 12px; }
+		#wpl-likebox #wpl-mustlogin label { position: relative; cursor: text; }
+		#wpl-likebox #wpl-mustlogin label span { position: absolute; top: 0px; left: 5px; padding: 0 !important; }
+		#wpl-likebox #wpl-mustlogin label span { top /*\**/: -10px\9; }
+	/* ]]> */
+	</style>
+	<link rel="openid.server" href="http://howtohft.wordpress.com/?openidserver=1">
+<link rel="openid.delegate" href="http://howtohft.wordpress.com/">
+<link rel="search" type="application/opensearchdescription+xml" href="https://web.archive.org/web/20110219163448/http://howtohft.wordpress.com/osd.xml" title="WK's High Frequency Trading Blog">
+<link rel="search" type="application/opensearchdescription+xml" href="https://web.archive.org/web/20110219163448/http://wordpress.com/opensearch.xml" title="WordPress.com">
+<meta name="application-name" content="WK's High Frequency Trading Blog"><meta name="msapplication-window" content="width=device-width;height=device-height"><meta name="msapplication-tooltip" content="An experienced quant/developer discusses the practice of high frequency trading."><meta name="msapplication-task" content="name=Subscribe;action-uri=http://howtohft.wordpress.com/feed/;icon-uri=http://s1.wp.com/i/favicon-stacked.ico"><meta name="msapplication-task" content="name=Sign up for a free blog;action-uri=http://wordpress.com/signup/;icon-uri=http://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Support;action-uri=http://support.wordpress.com/;icon-uri=http://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Forums;action-uri=http://forums.wordpress.com/;icon-uri=http://s2.wp.com/i/favicon.ico">
+<script type="text/javascript">/*<![CDATA[*/if(typeof(addLoadEvent)!='undefined'){addLoadEvent(function(){if(top==self){i=document.createElement('img');i.src='https://web.archive.org/web/20110219163448/http://botd2.wordpress.com/botd.gif?blog=20091585&post=9&lang=en&date=1297795292&ip=204.236.226.210&url=http://howtohft.wordpress.com/2011/02/15/how-to-build-a-fast-limit-order-book/';i.style.width='0px';i.style.height='0px';i.style.overflow='hidden';document.body.appendChild(i);}});}/*]]>*/</script>
+<link rel="stylesheet" type="text/css" id="gravatar-card-css" href="How%20to%20Build%20a%20Fast%20Limit%20Order%20Book%20%C2%AB%20WK's%20High%20Frequency%20Trading%20Blog_files/hovercard.css"><link rel="stylesheet" type="text/css" id="gravatar-card-services-css" href="How%20to%20Build%20a%20Fast%20Limit%20Order%20Book%20%C2%AB%20WK's%20High%20Frequency%20Trading%20Blog_files/services.css"></head>
+
+<body><!-- BEGIN WAYBACK TOOLBAR INSERT -->
+<script>__wm.rw(0);</script>
+<div id="wm-ipp-base" style="display: block; direction: ltr;" lang="en">
+</div><div id="wm-ipp-print">The Wayback Machine - 
+https://web.archive.org/web/20110219163448/http://howtohft.wordpress.com:80/2011/02/15/how-to-build-a-fast-limit-order-book/</div>
+<script type="text/javascript">//<![CDATA[
+__wm.bt(700,27,25,2,"web","http://howtohft.wordpress.com/2011/02/15/how-to-build-a-fast-limit-order-book/","20110219163448",1996,"/_static/",["/_static/css/banner-styles.css?v=S1zqJCYt","/_static/css/iconochive.css?v=qtvMKcIJ"], false);
+  __wm.rw(1);
+//]]></script>
+<!-- END WAYBACK TOOLBAR INSERT -->
+ 
+<!-- wrap START -->
+<div id="wrap">
+
+<!-- container START -->
+<div id="container">
+
+<!-- header START -->
+<div id="header">
+
+	<!-- banner START -->
+		<!-- banner END -->
+
+	<div id="caption">
+		<h1 id="title"><a href="https://web.archive.org/web/20110219163448/http://howtohft.wordpress.com/">WK's High Frequency Trading Blog</a></h1>
+		<div id="tagline">An experienced quant/developer discusses the practice of high frequency trading.</div>
+	</div>
+
+	<div class="fixed"></div>
+</div>
+<!-- header END -->
+
+<!-- navigation START -->
+<div id="navigation">
+	<!-- menus START -->
+	<ul id="menus">
+	<li class=""><a class="home" title="Home" href="https://web.archive.org/web/20110219163448/http://howtohft.wordpress.com/">Home</a></li>
+	<li class="page_item page-item-2"><a href="https://web.archive.org/web/20110219163448/http://howtohft.wordpress.com/about/" title="About">About</a></li>
+	<li><a class="lastmenu" href="javascript:void(0);"></a></li>
+</ul>
+
+	<!-- menus END -->
+
+	<!-- searchbox START -->
+	<div id="searchbox">
+		<form action="https://web.archive.org/web/20110219163448/http://howtohft.wordpress.com/" method="get">
+			<div class="content">
+				<input type="text" class="textfield searchtip" name="s" size="24" value="Type text to search here...">
+				<input type="submit" class="button" value="">
+			</div>
+		</form>
+	</div>
+<script type="text/javascript">
+//<![CDATA[
+	var searchbox = MGJS.$("searchbox");
+	var searchtxt = MGJS.getElementsByClassName("textfield", "input", searchbox)[0];
+	var searchbtn = MGJS.getElementsByClassName("button", "input", searchbox)[0];
+	var tiptext = "Type text to search here...";
+	if(searchtxt.value == "" || searchtxt.value == tiptext) {
+		searchtxt.className += " searchtip";
+		searchtxt.value = tiptext;
+	}
+	searchtxt.onfocus = function(e) {
+		if(searchtxt.value == tiptext) {
+			searchtxt.value = "";
+			searchtxt.className = searchtxt.className.replace(" searchtip", "");
+		}
+	}
+	searchtxt.onblur = function(e) {
+		if(searchtxt.value == "") {
+			searchtxt.className += " searchtip";
+			searchtxt.value = tiptext;
+		}
+	}
+	searchbtn.onclick = function(e) {
+		if(searchtxt.value == "" || searchtxt.value == tiptext) {
+			return false;
+		}
+	}
+//]]>
+</script>
+	<!-- searchbox END -->
+
+	<div class="fixed"></div>
+</div>
+<!-- navigation END -->
+
+<!-- content START -->
+<div id="content">
+
+	<!-- main START -->
+	<div id="main">
+
+
+	<div id="postpath">
+		<a title="Go to homepage" href="https://web.archive.org/web/20110219163448/http://howtohft.wordpress.com/">Home</a>
+		 &gt; <a href="https://web.archive.org/web/20110219163448/http://en.wordpress.com/tag/trading/" title="View all posts in Trading" rel="category tag">Trading</a>		 &gt; How to Build a Fast Limit Order&nbsp;Book	</div>
+
+	<div class="post" id="post-9">
+		<h2>How to Build a Fast Limit Order&nbsp;Book</h2>
+		<div class="info">
+			<span class="date">February 15, 2011</span>
+			<span class="author"><a href="https://web.archive.org/web/20110219163448/http://howtohft.wordpress.com/author/howtohft/" title="Posts by wkselph">wkselph</a></span>										<span class="addcomment"><a href="#respond">Leave a comment</a></span>
+				<span class="comments"><a href="#comments">Go to comments</a></span>
+						<div class="fixed"></div>
+		</div>
+		<div class="content">
+			<p>The response to my first few posts has been much larger than I’d imagined and I’d like to thank everyone for the encouragement.</p>
+<p><i>If you’re interested in building a trading system I recommend first reading my <a href="https://web.archive.org/web/20110219163448/http://howtohft.wordpress.com/2011/02/15/building-a-trading-system-general-considerations/">previous post</a>&nbsp;on general ideas to keep in mind.</i></p>
+<p>My first really technical post will be on how to build a limit order 
+book, probably the single most important component of a trading system. 
+&nbsp;Because the data structure chosen to represent the limit order 
+book will be the primary source of market information for trading 
+models, it is important to make it both absolutely correct and extremely
+ fast.</p>
+<p>To give some idea of the data volumes, the <a href="https://web.archive.org/web/20110219163448/http://www.nasdaqtrader.com/content/technicalsupport/specifications/dataproducts/nqtv-itch-v4_1.pdf">Nasdaq TotalView ITCH feed</a>,
+ which is every event in every instrument traded on the Nasdaq, can have
+ data rates of 20+ gigabytes/day with spikes of 3 megabytes/second or 
+more. &nbsp;The individual messages average about 20 bytes each so this 
+means handling 100,000-200,000 messages per second during high volume 
+periods.</p>
+<p>There are three main operations that a limit order book (LOB) has to 
+implement: add, cancel, and execute. &nbsp;The goal is to implement 
+these operations in O(1) time while making it possible for the trading 
+model to efficiently ask questions like “what are the best bid and 
+offer?”, “how much volume is there between prices A and B?” or “what is 
+order X’s current position in the book?” </p>
+<p>The vast majority of the activity in a book is usually made up of add
+ and cancel operations as market makers jockey for position, with 
+executions a distant third (in fact I would argue that the bulk of the 
+useful information on many stocks, particularly in the morning, is in 
+the pattern of adds and cancels, not executions, but that is a topic for
+ another post). &nbsp;An add operation places an order at the end of a 
+list of orders to be executed at a particular limit price, a cancel 
+operation removes an order from anywhere in the book, and an execution 
+removes an order from the inside of the book (the inside of the book is 
+defined as the oldest buy order at the highest buying price and the 
+oldest sell order at the lowest selling price). &nbsp;Each of these 
+operations is keyed off an id number&nbsp;(Order.idNumber in the 
+pseudo-code below), making a hash table a natural structure for tracking
+ them.</p>
+<p>Depending on the expected sparsity of the book (sparsity being the 
+average distance in cents between limits that have volume, which is 
+generally positively correlated with the instrument price), there are a 
+number of slightly different implementations I’ve used. &nbsp;First it 
+will help to define a few objects:</p>
+<blockquote><p>
+Order<br>
+&nbsp;&nbsp;int idNumber;<br>
+&nbsp;&nbsp;bool buyOrSell;<br>
+&nbsp;&nbsp;int shares;<br>
+&nbsp;&nbsp;int limit;<br>
+&nbsp;&nbsp;int entryTime;<br>
+&nbsp;&nbsp;int eventTime;<br>
+&nbsp;&nbsp;Order *nextOrder;<br>
+&nbsp;&nbsp;Order *prevOrder;<br>
+&nbsp;&nbsp;Limit *parentLimit;</p>
+<p>Limit &nbsp;// representing a single limit price<br>
+&nbsp;&nbsp;int limitPrice;<br>
+&nbsp;&nbsp;int size;<br>
+&nbsp;&nbsp;int totalVolume;<br>
+&nbsp;&nbsp;Limit *parent;<br>
+&nbsp;&nbsp;Limit *leftChild;<br>
+&nbsp;&nbsp;Limit *rightChild;<br>
+&nbsp;&nbsp;Order *headOrder;<br>
+&nbsp;&nbsp;Order *tailOrder;</p>
+<p>Book<br>
+&nbsp;&nbsp;Limit *buyTree;<br>
+&nbsp;&nbsp;Limit *sellTree;<br>
+&nbsp;&nbsp;Limit *lowestSell;<br>
+&nbsp;&nbsp;Limit *highestBuy;</p></blockquote>
+<p>The idea is to have a binary tree of Limit objects sorted by 
+limitPrice, each of which is itself a doubly linked list of Order 
+objects. &nbsp;Each side of the book, the buy Limits and the sell 
+Limits, should be in separate trees so that the inside of the book 
+corresponds to the end and beginning of the buy Limit tree and sell 
+Limit tree, respectively. &nbsp;Each order is also an entry in a map 
+keyed off idNumber, and each Limit is also an entry in a map keyed off 
+limitPrice. </p>
+<p>With this structure you can easily implement these key operations with good performance:</p>
+<p>Add – O(log M) for the first order at a limit, O(1) for all others<br>
+Cancel – O(1)<br>
+Execute – O(1)<br>
+GetVolumeAtLimit – O(1)<br>
+GetBestBid/Offer – O(1)</p>
+<p>where M is the number of price Limits (generally &lt;&lt; N the 
+number of orders). &nbsp;Some strategy for keeping the limit tree 
+balanced should be used because the nature of markets is such that 
+orders will be being removed from one side of the tree as they’re being 
+added to the other. &nbsp;Keep in mind, though, that it is important to 
+be able to update Book.lowestSell/highestBuy in O(1) time when a limit 
+is deleted (which is why each Limit has a Limit *parent) so that 
+GetBestBid/Offer can remain O(1).</p>
+<p>A variation on this structure is to store the Limits in a sparse 
+array instead of a tree. &nbsp;This will give O(1) always for add 
+operations, but at the cost of making deletion/execution of the last 
+order at the inside limit O(M) as Book.lowestSell/highestBuy have to be 
+updated (for a non-sparse book you will usually get much better than 
+O(M) though). &nbsp;If you store the Limits in a sparse array and linked
+ together in a list then adds become O(log M) again while 
+deletes/executions stay O(1). &nbsp;These are all good implementations; 
+which one is best depends mainly on the sparsity of the book.</p>
+<p>Generally, it’s also wise to use batch allocations, or if using a 
+garbage collecting language like Java, object pools for these entities. 
+&nbsp;Java can be made fast enough for HFT as long as the garbage 
+collector isn’t allowed to run.</p>
+<p>Strategies for safely and robustly providing access to the book’s 
+data from multiple threads will be the subject of another post.</p>
+<p>To conclude, this is how I’ve learned to build a high performance 
+limit order book. &nbsp;If anyone has questions about how specifically 
+to implement some of the operations I talk about, please post in the 
+comments.</p>
+						<div class="fixed"></div>
+		</div>
+		<div class="under">
+			<span><span class="categories">Categories: </span><a href="https://web.archive.org/web/20110219163448/http://en.wordpress.com/tag/trading/" title="View all posts in Trading" rel="category tag">Trading</a></span>
+			<span><span class="tags">Tags: </span><a href="https://web.archive.org/web/20110219163448/http://en.wordpress.com/tag/high-frequency-trading/" rel="tag">high frequency trading</a>, <a href="https://web.archive.org/web/20110219163448/http://en.wordpress.com/tag/limit-order-book/" rel="tag">limit order book</a>, <a href="https://web.archive.org/web/20110219163448/http://en.wordpress.com/tag/limit-orders/" rel="tag">limit orders</a></span>
+		</div>
+		<div class="fixed"></div>
+	</div>
+
+	<div id="wpl-likebox"><div id="wpl-button"><a href="https://web.archive.org/web/20110219163448/http://howtohft.wordpress.com/2011/02/15/how-to-build-a-fast-limit-order-book/?like=1&amp;_wpnonce=145c4bbad2" title="I like this post" class="like needs-login" rel="nofollow"><span>Like</span></a></div><div id="wpl-count">Be the first to like this post.</div></div><script type="text/javascript" src="How%20to%20Build%20a%20Fast%20Limit%20Order%20Book%20%C2%AB%20WK's%20High%20Frequency%20Trading%20Blog_files/comment.js"></script>
+
+
+
+<div id="comments">
+
+<div id="cmtswitcher">
+			<a id="commenttab" class="curtab" href="javascript:void(0);" onclick="MGJS.switchTab('thecomments,commentnavi', 'thetrackbacks', 'commenttab', 'curtab', 'trackbacktab', 'tab');">Comments (0)</a>
+		<a id="trackbacktab" class="tab" href="javascript:void(0);" onclick="MGJS.switchTab('thetrackbacks', 'thecomments,commentnavi', 'trackbacktab', 'curtab', 'commenttab', 'tab');">Trackbacks (0)</a>
+				<span class="addcomment"><a href="#respond">Leave a comment</a></span>
+				<span class="addtrackback"><a href="https://web.archive.org/web/20110219163448/http://howtohft.wordpress.com/2011/02/15/how-to-build-a-fast-limit-order-book/trackback/">Trackback</a></span>
+		<div class="fixed"></div>
+</div>
+
+<div id="commentlist">
+	<!-- comments START -->
+	<ol id="thecomments">
+			<li class="messagebox">
+			No comments yet.		</li>
+		</ol>
+	<!-- comments END -->
+
+
+	<!-- trackbacks START -->
+			<ol id="thetrackbacks">
+							<li class="messagebox">
+					No trackbacks yet.				</li>
+
+					</ol>
+		<div class="fixed"></div>
+	<!-- trackbacks END -->
+</div>
+
+</div>
+
+
+								<div id="respond">
+				<h3 id="reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="https://web.archive.org/web/20110219163448/http://howtohft.wordpress.com/2011/02/15/how-to-build-a-fast-limit-order-book/#respond" style="display:none;">Cancel reply</a></small></h3>
+									<form action="https://web.archive.org/web/20110219163448/http://howtohft.wordpress.com/wp-comments-post.php" method="post" id="commentform">
+																			<p class="comment-notes">Your email address will not be published.</p>							<p class="comment-form-author"><label for="author">Name</label> <input id="author" name="author" type="text" size="30"></p>
+<p class="comment-form-email"><label for="email">Email</label> <input id="email" name="email" type="text" size="30"></p>
+<p class="comment-form-url"><label for="url">Website</label><input id="url" name="url" type="text" size="30"></p>
+												<p class="comment-form-comment"><label for="comment">Comment</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>						<p class="form-allowed-tags">You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:  <code>&lt;a
+ href="" title=""&gt; &lt;abbr title=""&gt; &lt;acronym title=""&gt; 
+&lt;b&gt; &lt;blockquote cite=""&gt; &lt;cite&gt; &lt;code&gt; 
+&lt;pre&gt; &lt;del datetime=""&gt; &lt;em&gt; &lt;i&gt; &lt;q 
+cite=""&gt; &lt;strike&gt; &lt;strong&gt; </code></p>						<p class="form-submit">
+							<input name="submit" type="submit" id="submit" value="Post Comment">
+							<input type="hidden" name="comment_post_ID" value="9" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+						</p>
+						
+<input type="hidden" name="genseq" value="1298133288">
+<p><input type="checkbox" name="subscribe" id="subscribe" value="subscribe" style="width: auto;" tabindex="6"> <label class="subscribe-label" id="subscribe-label" for="subscribe">Notify me of follow-up comments via email.</label></p><p><input type="checkbox" name="subscribe_blog" id="subscribe_blog" value="subscribe" style="width: auto;" tabindex="7"> <label class="subscribe-label" id="subscribe-blog-label" for="subscribe_blog">Notify me of site updates</label></p><input type="hidden" name="sub-type" value="comment-form-text4"><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="7ffe1d9f2c"></p>					</form>
+							</div><!-- #respond -->
+						
+	
+
+	<div id="postnavi">
+		<span class="prev"><a href="https://web.archive.org/web/20110219163448/http://howtohft.wordpress.com/2011/02/15/clocks-and-latency/" rel="next">Clocks and&nbsp;Latency</a></span>
+		<span class="next"><a href="https://web.archive.org/web/20110219163448/http://howtohft.wordpress.com/2011/02/15/building-a-trading-system-general-considerations/" rel="prev">Building a Trading System – General&nbsp;Considerations</a></span>
+		<div class="fixed"></div>
+	</div>
+
+
+	</div>
+	<!-- main END -->
+
+	
+<!-- sidebar START -->
+<div id="sidebar">
+
+<!-- sidebar north START -->
+<div id="northsidebar" class="sidebar">
+
+	<!-- feeds -->
+	<div class="widget widget_feeds">
+		<div class="content">
+			<div id="subscribe">
+				<a rel="external nofollow" id="feedrss" title="Subscribe to this blog..." href="https://web.archive.org/web/20110219163448/http://howtohft.wordpress.com/feed/"><abbr title="Really Simple Syndication">RSS</abbr> feed</a>
+									<ul id="feed_readers">
+						<li id="google_reader"><a rel="external nofollow" class="reader" title="Subscribe with Google" href="https://web.archive.org/web/20110219163448/http://fusion.google.com/add?feedurl=http://howtohft.wordpress.com/feed/"><span>Google</span></a></li>
+						<li id="youdao_reader"><a rel="external nofollow" class="reader" title="Subscribe with Youdao" href="https://web.archive.org/web/20110219163448/http://reader.youdao.com/#url=http://howtohft.wordpress.com/feed/"><span>Youdao</span></a></li>
+						<li id="xianguo_reader"><a rel="external nofollow" class="reader" title="Subscribe with Xian Guo" href="https://web.archive.org/web/20110219163448/http://www.xianguo.com/subscribe.php?url=http://howtohft.wordpress.com/feed/"><span>Xian Guo</span></a></li>
+						<li id="zhuaxia_reader"><a rel="external nofollow" class="reader" title="Subscribe with Zhua Xia" href="https://web.archive.org/web/20110219163448/http://www.zhuaxia.com/add_channel.php?url=http://howtohft.wordpress.com/feed/"><span>Zhua Xia</span></a></li>
+						<li id="yahoo_reader"><a rel="external nofollow" class="reader" title="Subscribe with My Yahoo!" href="https://web.archive.org/web/20110219163448/http://add.my.yahoo.com/rss?url=http://howtohft.wordpress.com/feed/"><span>My Yahoo!</span></a></li>
+						<li id="newsgator_reader"><a rel="external nofollow" class="reader" title="Subscribe with newsgator" href="https://web.archive.org/web/20110219163448/http://www.newsgator.com/ngs/subscriber/subfext.aspx?url=http://howtohft.wordpress.com/feed/"><span>newsgator</span></a></li>
+						<li id="bloglines_reader"><a rel="external nofollow" class="reader" title="Subscribe with Bloglines" href="https://web.archive.org/web/20110219163448/http://www.bloglines.com/sub/http://howtohft.wordpress.com/feed/"><span>Bloglines</span></a></li>
+						<li id="inezha_reader"><a rel="external nofollow" class="reader" title="Subscribe with iNezha" href="https://web.archive.org/web/20110219163448/http://inezha.com/add?url=http://howtohft.wordpress.com/feed/"><span>iNezha</span></a></li>
+					</ul>
+							</div>
+
+			<!-- twitter -->
+			
+			<div class="fixed"></div>
+		</div>
+	</div>
+
+	<!-- showcase -->
+	
+<div id="blog_subscription-5" class="widget widget_blog_subscription"><h3><label for="subscribe-field">Subscribe via Email</label></h3>
+<form action="https://web.archive.org/web/20110219163448/http://subscribe.wordpress.com/" method="post" accept-charset="utf-8" id="subscribe-blog">
+					<p><input type="text" name="email" style="width: 95%; padding: 1px 2px" id="subscribe-field"></p>
+	
+	<input type="hidden" name="action" value="subscribe">
+	<input type="hidden" name="blog_id" value="20091585">
+	<input type="hidden" name="source" value="http://howtohft.wordpress.com/2011/02/15/how-to-build-a-fast-limit-order-book/">
+	<input type="hidden" name="sub-type" value="widget">
+
+	<input type="hidden" id="_wpnonce" name="_wpnonce" value="b13c916ac9"><input type="hidden" name="_wp_http_referer" value="/2011/02/15/how-to-build-a-fast-limit-order-book/">
+	<p><input type="submit" value="Subscribe"></p>
+</form>
+
+</div><div id="text-4" class="widget widget_text"><h3>Email</h3>			<div class="textwidget">wkselph@gmail.com</div>
+		</div>		<div id="recent-posts-4" class="widget widget_recent_entries">		<h3>Recent Posts</h3>		<ul>
+				<li><a href="https://web.archive.org/web/20110219163448/http://howtohft.wordpress.com/2011/02/16/trading-system-testability/" title="Trading System&nbsp;Testability">Trading System&nbsp;Testability</a></li>
+				<li><a href="https://web.archive.org/web/20110219163448/http://howtohft.wordpress.com/2011/02/15/bootstrapping-a-hft-firm/" title="Bootstrapping a HFT&nbsp;Firm">Bootstrapping a HFT&nbsp;Firm</a></li>
+				<li><a href="https://web.archive.org/web/20110219163448/http://howtohft.wordpress.com/2011/02/15/message-queues/" title="Message&nbsp;Queues">Message&nbsp;Queues</a></li>
+				<li><a href="https://web.archive.org/web/20110219163448/http://howtohft.wordpress.com/2011/02/15/clocks-and-latency/" title="Clocks and&nbsp;Latency">Clocks and&nbsp;Latency</a></li>
+				<li><a href="https://web.archive.org/web/20110219163448/http://howtohft.wordpress.com/2011/02/15/how-to-build-a-fast-limit-order-book/" title="How to Build a Fast Limit Order&nbsp;Book">How to Build a Fast Limit Order&nbsp;Book</a></li>
+				</ul>
+		</div><div id="categories-4" class="widget widget_categories"><h3>Categories</h3>		<ul>
+			<li class="cat-item cat-item-179"><a href="https://web.archive.org/web/20110219163448/http://howtohft.wordpress.com/category/business/" title="View all posts filed under Business">Business</a>
+</li>
+	<li class="cat-item cat-item-1516"><a href="https://web.archive.org/web/20110219163448/http://howtohft.wordpress.com/category/trading/" title="View all posts filed under Trading">Trading</a>
+</li>
+		</ul>
+</div><div id="linkcat-1356" class="widget widget_links"><h3>Blogroll</h3>
+	<ul class="xoxo blogroll">
+<li><a href="https://web.archive.org/web/20110219163448/http://boss-level.com/">Boss Level</a></li>
+<li><a href="https://web.archive.org/web/20110219163448/http://maxdama.com/">Max Dama</a></li>
+<li><a href="https://web.archive.org/web/20110219163448/http://tr8dr.wordpress.com/">tr8dr</a></li>
+
+	</ul>
+</div>
+	</div>
+</div>
+<!-- sidebar END -->
+	<div class="fixed"></div>
+</div>
+<!-- content END -->
+
+<!-- footer START -->
+<div id="footer">
+	<a id="gotop" href="#" onclick="MGJS.goTop();return false;">Top</a>
+	<a id="powered" href="https://web.archive.org/web/20110219163448/http://wordpress.com/">WordPress</a>
+	<div id="copyright">
+		Copyright © 2011 WK's High Frequency Trading Blog	</div>
+	<div id="themeinfo">
+		<a href="https://web.archive.org/web/20110219163448/http://wordpress.com/?ref=footer" rel="generator">Blog at WordPress.com</a>. Theme: <a href="https://web.archive.org/web/20110219163448/http://theme.wordpress.com/themes/inove/">INove</a> by <a href="https://web.archive.org/web/20110219163448/http://www.neoease.com/" rel="designer">NeoEase</a>.	</div>
+</div>
+<!-- footer END -->
+
+</div>
+<!-- container END -->
+</div>
+<!-- wrap END -->
+
+<script type="text/javascript">
+// <![CDATA[
+(function() {
+try{
+  if ( window.external &&'msIsSiteMode' in window.external) {
+    if (window.external.msIsSiteMode()) {
+      var jl = document.createElement('script');
+      jl.type='text/javascript';
+      jl.async=true;
+      jl.src='/wp-content/plugins/ie-sitemode/custom-jumplist.php';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(jl, s);
+    }
+  }
+}catch(e){}
+})();
+// ]]>
+</script>	<script type="text/javascript">
+	/* <![CDATA[ */
+		jQuery( function() {
+			
+			jQuery('#wpl-button > a.like').click( function(e) {
+				e.preventDefault();
+				
+				jQuery('#wpl-mustlogin').remove();
+
+				jQuery.post( 'https://web.archive.org/web/20110219163448/http://howtohft.wordpress.com/wp-admin/admin-ajax.php', { 
+					'action': 'wpl_record_stat',
+					'stat_name': 'loggedout_like_click'
+				} );
+
+				var tenMins = new Date();
+				tenMins.setTime( tenMins.getTime() + 600000 );
+				document.cookie = 'wpl_rand=453ffcda4b; expires=' + tenMins.toGMTString() + '; domain=wordpress.com; path=/;';
+				
+				jQuery('#wpl-count').after( '\
+					<div id="wpl-mustlogin"> \
+						<form action="https://web.archive.org/web/20110219163448/http://howtohft.wordpress.com/wp-login.php" method="post"> \
+							<p>Just one more step to like this post:</p> \
+							<label><span>Username</span> <input type="text" name="log" id="user_login" class="input" value="" size="20" tabindex="80" /></label> \
+							<label><span>Password</span> <input type="password" name="pwd" id="user_pass" class="input" value="" size="20" tabindex="81" /></label> \
+							<input type="submit" name="wp-submit" id="wp-submit" class="button-primary" value="Log In" tabindex="82" /> \
+							<input type="hidden" name="redirect_to" value="https://web.archive.org/web/20110219163448/http://howtohft.wordpress.com/2011/02/15/how-to-build-a-fast-limit-order-book/?like=1" /> \
+							<input type="hidden" name="wpl_rand" value="453ffcda4b" /> \
+							<p>Not a member yet? <a href="https://web.archive.org/web/20110219163448/http://wordpress.com/signup/?ref=likebox" id="wpl-signup-link">Sign up with WordPress.com</a></p> \
+						</form> \
+					</div> \
+				');
+				
+				jQuery('#wpl-mustlogin').hide().slideDown('fast');
+			} );
+			
+			jQuery('#wpl-mustlogin input.input').live( 'focus', function() {
+				jQuery(this).prev().hide();
+			}).live( 'blur', function() {
+				if ( jQuery(this).val() == '' )
+					jQuery(this).prev().show();
+			});
+			
+			jQuery('#wpl-mustlogin input#wp-submit').live( 'click', function(e) {
+				e.preventDefault();
+				
+				jQuery.post( 'https://web.archive.org/web/20110219163448/http://howtohft.wordpress.com/wp-admin/admin-ajax.php', { 
+					'action': 'wpl_record_stat',
+					'stat_name': 'loggedout_login_submit'
+				}, function() {
+					jQuery('#wpl-mustlogin form').submit();
+				} );
+			});			
+			
+			jQuery('#wpl-mustlogin a#wpl-signup-link').live( 'click', function(e) {
+				e.preventDefault();
+				
+				var link = jQuery(this).attr('href');
+				
+				jQuery.post( 'https://web.archive.org/web/20110219163448/http://howtohft.wordpress.com/wp-admin/admin-ajax.php', { 
+					'action': 'wpl_record_stat',
+					'stat_name': 'loggedout_signup_click'
+				}, function() {
+					location.href = link;
+				} );
+			});					
+			
+		});
+	/* ]]> */
+	</script>
+<script type="text/javascript">_qoptions={qacct:'p-18-mFEk4J448M',labels:'language.en,type.wpcom,posttag.high-frequency-trading,posttag.limit-order-book,posttag.limit-orders'};</script>
+<script type="text/javascript" src="How%20to%20Build%20a%20Fast%20Limit%20Order%20Book%20%C2%AB%20WK's%20High%20Frequency%20Trading%20Blog_files/quant.js"></script>
+<noscript><p><img class="robots-nocontent" src="https://web.archive.org/web/20110219163448im_/http://pixel.quantserve.com/pixel/p-18-mFEk4J448M.gif?labels=language.en%2Ctype.wpcom%2Cposttag.high-frequency-trading%2Cposttag.limit-order-book%2Cposttag.limit-orders" style="display:none" height="1" width="1" alt=""/></p></noscript>
+<script type="text/javascript" src="How%20to%20Build%20a%20Fast%20Limit%20Order%20Book%20%C2%AB%20WK's%20High%20Frequency%20Trading%20Blog_files/gprofiles.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var WPGroHo = {
+	my_hash: ""
+};
+/* ]]> */
+</script>
+<script type="text/javascript" src="How%20to%20Build%20a%20Fast%20Limit%20Order%20Book%20%C2%AB%20WK's%20High%20Frequency%20Trading%20Blog_files/wpgroho.js"></script>
+	<div style="display:none">
+	</div>
+<script type="text/javascript" src="How%20to%20Build%20a%20Fast%20Limit%20Order%20Book%20%C2%AB%20WK's%20High%20Frequency%20Trading%20Blog_files/beacon.js"></script><script type="text/javascript">try{COMSCORE.beacon({c1:2,c2:7518284});}catch(e){}</script><noscript><p class="robots-nocontent"><img src="https://web.archive.org/web/20110219163448im_/http://b.scorecardresearch.com/p?cj=1c1=2&amp;c2=7518284" alt="" style="display:none" width="1" height="1"/></p></noscript><script src="How%20to%20Build%20a%20Fast%20Limit%20Order%20Book%20%C2%AB%20WK's%20High%20Frequency%20Trading%20Blog_files/w.js" type="text/javascript"></script>
+<script type="text/javascript">
+st_go({'blog':'20091585','v':'wpcom','user_id':'0','post':'9','subd':'howtohft'});
+ex_go({'crypt':'RDZ8LFkxbXFpUUhpYm5dQSx+QkxOP3hERUtUeUtxR0puNGkzfitGVFVtflh3XWM3eDd6blVJVFdQZC0uOEFuczdPV2UlXTBiTW5jaWhrTVJrb05CXTQ5RDkxRmZPa2VOUmQ0b0ZGbS5VUCUlUEpbNStPTEJfcVNtSExoc1R0anExJnB0fEk1T3hOfF9dYjV6R3ZzT25pVTFab2tuNXhkcWV2Ym1rNEhbd0JqaTRzaFVYK0ttcjRGRnxGNmhvZFB3R1JORy9wemZxVzRG'});
+addLoadEvent(function(){linktracker_init('20091585',9);});
+	</script><img id="wpstats" src="How%20to%20Build%20a%20Fast%20Limit%20Order%20Book%20%C2%AB%20WK's%20High%20Frequency%20Trading%20Blog_files/g_002.html" alt=""><img id="wpstats2" src="How%20to%20Build%20a%20Fast%20Limit%20Order%20Book%20%C2%AB%20WK's%20High%20Frequency%20Trading%20Blog_files/g.html" alt="" style="display:none">
+
+
+
+
+<img src="How%20to%20Build%20a%20Fast%20Limit%20Order%20Book%20%C2%AB%20WK's%20High%20Frequency%20Trading%20Blog_files/botd.gif" style="width: 0px; height: 0px; overflow: hidden;"></body></html>
+<!--
+     FILE ARCHIVED ON 16:34:48 Feb 19, 2011 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 12:03:31 Feb 25, 2023.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 117.408 (11)
+  exclusion.robots: 0.223
+  exclusion.robots.policy: 0.212
+  cdx.remote: 0.064
+  esindex: 0.007
+  LoadShardBlock: 89.56 (3)
+  PetaboxLoader3.datanode: 93.319 (4)
+  load_resource: 88.864
+  PetaboxLoader3.resolve: 35.791
+-->

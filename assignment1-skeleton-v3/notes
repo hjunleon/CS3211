@@ -1,0 +1,38 @@
+Resting orders should be arranged from chepest sell side to ex sell side, then from earliest to latest sent ( i think cant be interrupted )
+ - This probably means i can't have order that front-runs another order, such as in cases where the first order is being matched while the second one can't be matched and is placed at the front 
+ - Receiving of orders should interrupt others at least for the timestamp arrival 
+
+HashTable, string key is the stock name. 2 tables for buy and sell side 
+
+Cannot merge orders, but can match multiple resting orders
+
+Visible side effects matter more than actual sequentially correcct
+
+Each partial match is an atomic operation, but can still interleave (https://stackoverflow.com/questions/23048144/what-is-process-interleaving-in-the-realm-of-concurrency)
+
+Each order should have clientId attached somehow
+
+Single land bridge problem: https://flylib.com/books/en/2.752.1.48/1/
+
+Cannot reorder client's orders 
+
+https://www.baeldung.com/lmax-disruptor-concurrency 
+- Queue not as good as ring buffer 
+- Q need locks on head, tail and size variables
+- Still dk how ring buffer prevents overflow
+
+https://stackoverflow.com/questions/6559308/how-does-lmaxs-disruptor-pattern-work
+- ring buffer is initialised to huge size to prevent the overflows from happening frequently?
+
+https://www.geeksforgeeks.org/introduction-and-array-implementation-of-circular-queue/
+- C++20 circular queue
+
+
+
+Since ours is up to 40 clients, i big ass circular buffer sounds pretty safe
+
+https://cs.stackexchange.com/questions/1004/most-efficient-know-way-to-match-orders
+
+https://github.com/narenallam/OrderMatchingSystem
+
+

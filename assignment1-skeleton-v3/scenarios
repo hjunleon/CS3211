@@ -1,0 +1,6 @@
+Scenarios:
+1. A Buy and A sell order OF THE SAME INSTRUMENT come in at same time, no resting orders on B and S side
+ - NO: cannot have both B and S orders rest, EFFECTIVELY at least one rests
+ - YES: EFFECTIVELY, add one to resting order first, then settle the next incoming order
+ - IMP: 
+    1. Lock on hashtable queue for that instrument for read and write.  

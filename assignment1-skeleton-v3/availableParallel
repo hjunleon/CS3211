@@ -1,0 +1,9 @@
+std::unique_lock 
+
+std::condition_variable cond; (acts like a message queue thingy )
+
+std::atomic
+
+std::unique_pt
+
+std::shared_ptr
